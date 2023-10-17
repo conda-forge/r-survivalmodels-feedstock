@@ -1,4 +1,4 @@
-{% set version = '0.1.13' %}
+{% set version = '0.1.16' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,30 +7,28 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  url:
-    - {{ cran_mirror }}/src/contrib/survivalmodels_{{ version }}.tar.gz
-    - {{ cran_mirror }}/src/contrib/Archive/survivalmodels/survivalmodels_{{ version }}.tar.gz
-  sha256: 477df5052a2b234466d62cec7fed174949ba0bc659b252630c7138ee7675ab34
+  url: https://raphaels1.r-universe.dev/src/contrib/survivalmodels_{{ version }}.tar.gz
+  md5: 2fc625b6b13f4dd9afeae9adaf7af546
 
 build:
   merge_build_host: True  # [win]
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-rcpp >=1.0.5
@@ -45,7 +43,8 @@ test:
     - "\"%R%\" -e \"library('survivalmodels')\""  # [win]
 
 about:
-  home: https://github.com/RaphaelS1/survivalmodels/
+  home: https://raphaels1.github.io/survivalmodels/
+  dev_url: https://github.com/RaphaelS1/survivalmodels/
   license: MIT
   summary: Implementations of classical and machine learning models for survival analysis, including
     deep neural networks via 'keras' and 'tensorflow'. Each model includes a separated
