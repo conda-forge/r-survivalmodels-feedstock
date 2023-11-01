@@ -1,4 +1,4 @@
-{% set version = '0.1.16' %}
+{% set version = "0.1.17" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://raphaels1.r-universe.dev/src/contrib/survivalmodels_{{ version }}.tar.gz
-  md5: 2fc625b6b13f4dd9afeae9adaf7af546
+  md5: cf0272a85b8a607ba678a3c908b6c099
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -46,17 +46,10 @@ about:
   home: https://raphaels1.github.io/survivalmodels/
   dev_url: https://github.com/RaphaelS1/survivalmodels/
   license: MIT
-  summary: Implementations of classical and machine learning models for survival analysis, including
-    deep neural networks via 'keras' and 'tensorflow'. Each model includes a separated
-    fit and predict interface with consistent prediction types for predicting risk,
-    survival probabilities, or survival distributions with 'distr6' <https://CRAN.R-project.org/package=distr6>.
-    Models are either implemented from 'Python' via 'reticulate' <https://CRAN.R-project.org/package=reticulate>,
-    from code in GitHub packages, or novel implementations using 'Rcpp' <https://CRAN.R-project.org/package=Rcpp>.
-    Novel machine learning survival models wil be included in the package in near-future
-    updates. Neural networks are implemented from the 'Python' package 'pycox' <https://github.com/havakv/pycox>
-    and are detailed by Kvamme et al. (2019) <https://jmlr.org/papers/v20/18-424.html>.
-    The 'Akritas' estimator is defined in Akritas (1994) <doi:10.1214/aos/1176325630>.
-    'DNNSurv' is defined in Zhao and Feng (2020) <arXiv:1908.02337>.
+  summary: Implementations of classical and machine learning models for survival analysis, including deep neural networks via 'keras' and 'tensorflow'. Each model includes a separated fit and predict interface with consistent prediction types for predicting risk, survival probabilities, or survival distributions with 'distr6'
+    <https://CRAN.R-project.org/package=distr6>. Models are either implemented from 'Python' via 'reticulate' <https://CRAN.R-project.org/package=reticulate>, from code in GitHub packages, or novel implementations using 'Rcpp' <https://CRAN.R-project.org/package=Rcpp>. Novel machine learning survival models wil be included
+    in the package in near-future updates. Neural networks are implemented from the 'Python' package 'pycox' <https://github.com/havakv/pycox> and are detailed by Kvamme et al. (2019) <https://jmlr.org/papers/v20/18-424.html>. The 'Akritas' estimator is defined in Akritas (1994) <doi:10.1214/aos/1176325630>. 'DNNSurv' is
+    defined in Zhao and Feng (2020) <arXiv:1908.02337>.
   license_family: MIT
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
