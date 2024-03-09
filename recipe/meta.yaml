@@ -1,4 +1,4 @@
-{% set version = "0.1.18" %}
+{% set version = "0.1.19" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://raphaels1.r-universe.dev/src/contrib/survivalmodels_{{ version }}.tar.gz
-  md5: 609261bd286318762c717f6774bbc3c4
+  md5: 8fb08056b97f623385f676590078b7b5
 
 build:
   merge_build_host: true  # [win]
